@@ -1,4 +1,4 @@
 # FiveIconDockXI
-Five Icons on your iOS 11 Dock
+Five Icons on your iOS 11 and 12 Dock
 
-It's a dead-simple tweak. 
+
