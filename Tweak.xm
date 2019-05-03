@@ -24,14 +24,6 @@ typedef struct SBIconCoordinate {
     }
 }
 
-// %new
-// -(double)distanceBetweenPoints:(CGPoint)point1 point2:(CGPoint)point2 {
-//     double dx = (point2.x - point1.x);
-//     double dy = (point2.y - point1.y);
-//     double dist = sqrt(dx*dx + dy*dy);
-//     return dist;
-// }
-
 -(CGPoint)originForIconAtCoordinate:(struct SBIconCoordinate)arg1 numberOfIcons:(unsigned long long)arg2 {
     if (arg2 == 5) {
         struct SBIconCoordinate cor1;
@@ -55,14 +47,13 @@ typedef struct SBIconCoordinate {
         CGPoint originalPointForIcon3 = %orig(cor3, 4);
         CGPoint originalPointForIcon4 = %orig(cor4, 4);
 
-        // double defaultSpacing = [self distanceBetweenPoints: originalPointForIcon1, point2:originalPointForIcon2] - 5;
         int defaultY = originalPointForIcon1.y;
 
-        int newIcon1X = originalPointForIcon1.x - 10;
-        int newIcon2X = originalPointForIcon2.x - 27;
-        int newIcon3X = originalPointForIcon3.x - 43;
-        int newIcon4X = originalPointForIcon4.x - 60;
-        int newIcon5X = newIcon4X + 70;
+        int newIcon1X = originalPointForIcon1.x - (int)(originalPointForIcon1.x * 0.21);
+        int newIcon2X = originalPointForIcon2.x - (int)(originalPointForIcon2.x * 0.21);
+        int newIcon3X = originalPointForIcon3.x - (int)(originalPointForIcon3.x * 0.21);
+        int newIcon4X = originalPointForIcon4.x - (int)(originalPointForIcon4.x * 0.21);
+        int newIcon5X = originalPointForIcon4.x + (int)(originalPointForIcon4.x * 0.03);
 
 
         if (arg1.col == 1) {
@@ -85,34 +76,4 @@ typedef struct SBIconCoordinate {
 
 }
 
-
--(CGPoint)originForIconAtCoordinate:(struct SBIconCoordinate)arg1 {
-    // if (arg1.col == 1) {
-    //     return CGPointMake(4, 14);
-    // }
-    // else if (arg1.col == 2) {
-    //     return CGPointMake(67, 14);
-    // }
-    // else if (arg1.col == 3) {
-    //     return CGPointMake(130, 14);
-    // }
-    // else if (arg1.col == 4) {
-    //     return CGPointMake(193, 14);
-    // }
-    // else {
-    //     return CGPointMake(256, 14);
-    // }
-    return %orig;
-}
-
-// -(double)effectiveSpacing {
-//
-// }
-//
-// -(void)setSpacing:(double)arg1 {
-//
-// }
-// -(double)spacing {
-//
-// }
 %end
