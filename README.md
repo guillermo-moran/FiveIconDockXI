@@ -1,4 +1,7 @@
 # FiveIconDockXI
-Five Icons on your iOS 11 and 12 Dock
+
+For Jailbroken devices.
+
+Hooks into iOS's SpringBoard to add an extra icon to your dock
 
 
