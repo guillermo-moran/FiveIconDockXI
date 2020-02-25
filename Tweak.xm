@@ -5,6 +5,7 @@ typedef struct SBIconCoordinate {
     NSInteger col;
 } SBIconCoordinate;
 
+%group iOS13
 %hook SBIconListGridLayoutConfiguration
 
 - (NSUInteger)numberOfPortraitColumns {
@@ -15,7 +16,9 @@ typedef struct SBIconCoordinate {
 }
 
 %end 
+%end 
 
+%group iOS12
 %hook SBDockIconListView
 
 + (unsigned long long)maxIcons {
@@ -34,6 +37,10 @@ typedef struct SBIconCoordinate {
 		return %orig;
     }
 }
+%end
+%end
+
+%hook SBDockIconListView
 
 -(CGPoint)originForIconAtCoordinate:(struct SBIconCoordinate)arg1 numberOfIcons:(unsigned long long)arg2 {
     if (arg2 == 5) {
@@ -88,3 +95,15 @@ typedef struct SBIconCoordinate {
 }
 
 %end
+
+%ctor {
+
+    %init;
+    
+    if(kCFCoreFoundationVersionNumber < 1650) {
+            %init(iOS12);    
+    }
+    else {
+            %init(iOS13);  
+    }
+}
